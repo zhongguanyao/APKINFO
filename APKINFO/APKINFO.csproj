@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C30E3E48-5E82-4A29-8BF3-B114CF9632E1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>APKINFO</RootNamespace>
+    <AssemblyName>APKINFO</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\BrowseCertificateBLL.cs" />
+    <Compile Include="BLL\DecompileBLL.cs" />
+    <Compile Include="BLL\MergeJarBLL.cs" />
+    <Compile Include="BLL\ResignApkBLL.cs" />
+    <Compile Include="Entity\CertificateInfo.cs" />
+    <Compile Include="UI\ApkInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ApkInfoForm.Designer.cs">
+      <DependentUpon>ApkInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\BrowseApkInfoBLL.cs" />
+    <Compile Include="BLL\BrowseSourceBLL.cs" />
+    <Compile Include="Entity\ApkInfo.cs" />
+    <Compile Include="Entity\AssetsConfig.cs" />
+    <Compile Include="Entity\Constants.cs" />
+    <Compile Include="Entity\KeystoreConfig.cs" />
+    <Compile Include="Interface\ILog.cs" />
+    <Compile Include="UI\MergeJarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MergeJarForm.Designer.cs">
+      <DependentUpon>MergeJarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MessageForm.Designer.cs">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AssetsConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssetsConfigForm.Designer.cs">
+      <DependentUpon>AssetsConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ResignApkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ResignApkForm.Designer.cs">
+      <DependentUpon>ResignApkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\ApkInfoForm.resx">
+      <DependentUpon>ApkInfoForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MergeJarForm.resx">
+      <DependentUpon>MergeJarForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MessageForm.resx">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AssetsConfigForm.resx">
+      <DependentUpon>AssetsConfigForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ResignApkForm.resx">
+      <DependentUpon>ResignApkForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BrowseCertificateForm.resx">
+      <DependentUpon>BrowseCertificateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UI\BrowseCertificateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BrowseCertificateForm.Designer.cs">
+      <DependentUpon>BrowseCertificateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\CmdUtils.cs" />
+    <Compile Include="Utils\ConfigUtils.cs" />
+    <Compile Include="Utils\FileUtils.cs" />
+    <Compile Include="Utils\LogUtils.cs" />
+    <Compile Include="Utils\CommonUtils.cs" />
+    <Compile Include="Utils\PathUtils.cs" />
+    <Compile Include="Utils\ZipUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bitbug_favicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
