@@ -6,6 +6,13 @@ APKINFO是一款APK信息查看工具，除了查看APK包名、应用名、各�
 ![打入Jar文件图片](https://img-blog.csdnimg.cn/2018110517214644.png "打入Jar文件图片")
 
 
+# 使用
+如果是参考源码的，可以用Visual Studio 2008打开
+<br><br>
+如果是使用该工具的，拷贝项目的bin/Debug目录下直接使用即可
+
+
+
 # 项目依赖工具
 项目中引入了JDK和Android ADT部分工具
 aapt.exe、jadx-0.7.1、keytool.exe、java.exe、apktool.jar、apktool.bat、jarsigner.exe、zipalign.exe、dx.jar、baksmali.jar、android.jar、jarsigner.exe、zipalign.exe
