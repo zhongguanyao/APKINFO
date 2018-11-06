@@ -100,7 +100,7 @@ namespace APKINFO.UI
         {
             if (mApkInfo == null) return;
 
-            BrowseCertForm form = new BrowseCertForm(mApkInfo.ApkFilePath);
+            BrowseCertForm form = new BrowseCertForm(mApkInfo.ApkFilePath, Constants.TYPE_APK_FILE);
             DialogResult dr = form.ShowDialog();
             if (dr == DialogResult.OK)
             {

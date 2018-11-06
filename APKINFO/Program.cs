@@ -39,8 +39,8 @@ namespace APKINFO
             } else
             {
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Title = "打开（.apk|.jar|.dex）文件";
-                ofd.Filter = "apk jar dex|*.apk;*.jar;*.dex";
+                ofd.Title = "打开（.apk|.jar|.dex|.jks|.keystore）文件";
+                ofd.Filter = "apk jar dex jks keystore|*.apk;*.jar;*.dex;*.jks;*.keystore";
                 DialogResult res = ofd.ShowDialog();
                 if (String.IsNullOrEmpty(ofd.FileName)) return;
 
@@ -58,9 +58,11 @@ namespace APKINFO
             if (!".jar".Equals(vExtension)
                 && !".dex".Equals(vExtension)
                 && !".apk".Equals(vExtension)
+                && !".jks".Equals(vExtension)
+                && !".keystore".Equals(vExtension)
                 )
             {
-                MessageBox.Show("文件格式错误（正确格式：.jar、.dex、.apk）");
+                MessageBox.Show("文件格式错误（正确格式：.jar、.dex、.apk、.jks、.keystore）");
                 return;
             }
 
@@ -88,6 +90,11 @@ namespace APKINFO
                 apkInfoForm.ShowDialog();
             }
 
+            if (".jks".Equals(vExtension) || ".keystore".Equals(vExtension))
+            {
+                BrowseCertForm browseCertForm = new BrowseCertForm(filePath, Constants.TYPE_CERT_FILE);
+                browseCertForm.ShowDialog();
+            }
             //Application.Run(new Form1());
         }
     }

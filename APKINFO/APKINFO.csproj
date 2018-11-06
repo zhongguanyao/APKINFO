@@ -13,6 +13,21 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,11 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\BrowseCertificateBLL.cs" />
+    <Compile Include="BLL\BrowseCertBLL.cs" />
     <Compile Include="BLL\DecompileBLL.cs" />
     <Compile Include="BLL\MergeJarBLL.cs" />
     <Compile Include="BLL\ResignApkBLL.cs" />
-    <Compile Include="Entity\CertificateInfo.cs" />
     <Compile Include="UI\ApkInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +82,12 @@
     <Compile Include="Entity\Constants.cs" />
     <Compile Include="Entity\KeystoreConfig.cs" />
     <Compile Include="Interface\ILog.cs" />
+    <Compile Include="UI\EnterPwdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EnterPwdForm.Designer.cs">
+      <DependentUpon>EnterPwdForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MergeJarForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +118,10 @@
       <DependentUpon>ApkInfoForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\EnterPwdForm.resx">
+      <DependentUpon>EnterPwdForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\MergeJarForm.resx">
       <DependentUpon>MergeJarForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -119,8 +143,8 @@
       <DependentUpon>ResignApkForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\BrowseCertificateForm.resx">
-      <DependentUpon>BrowseCertificateForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\BrowseCertForm.resx">
+      <DependentUpon>BrowseCertForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -136,11 +160,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UI\BrowseCertificateForm.cs">
+    <Compile Include="UI\BrowseCertForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\BrowseCertificateForm.Designer.cs">
-      <DependentUpon>BrowseCertificateForm.cs</DependentUpon>
+    <Compile Include="UI\BrowseCertForm.Designer.cs">
+      <DependentUpon>BrowseCertForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\CmdUtils.cs" />
     <Compile Include="Utils\ConfigUtils.cs" />
@@ -152,6 +176,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bitbug_favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

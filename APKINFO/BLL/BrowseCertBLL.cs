@@ -24,7 +24,7 @@ namespace APKINFO.BLL
     {
 
         /// <summary>
-        /// 查看签名信息
+        /// 查看APK签名信息
         /// </summary>
         /// <param name="apkFilePath"></param>
         /// <param name="logView"></param>
@@ -62,7 +62,7 @@ namespace APKINFO.BLL
 
             string keyToolPath = PathUtils.GetPath(Constants.PATH_KEYTOOL);
             if (!File.Exists(keyToolPath)) {
-                logView.Log(">>>>>>重新签名失败: " + keyToolPath + "不存在！");
+                logView.Log(">>>>>>查看签名信息失败: " + keyToolPath + "不存在！");
                 return null;
             }
 
@@ -88,6 +88,58 @@ namespace APKINFO.BLL
 
         }
 
+
+
+        /// <summary>
+        /// 查看签名库文件信息
+        /// </summary>
+        /// <param name="certFilePath">.keystore或.jks签名库文件</param>
+        /// <param name="password">签名库密码</param>
+        /// <param name="logView"></param>
+        /// <returns></returns>
+        public static string BrowseCert(string certFilePath, string password, ILog logView)
+        {
+
+            if (string.IsNullOrEmpty(certFilePath) || !File.Exists(certFilePath))
+            {
+                logView.Log(">>>>>>查看签名信息失败：签名库文件不存在！");
+                return null;
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                logView.Log(">>>>>>查看签名信息失败：密码为空！");
+                return null;
+            }
+
+            string keyToolPath = PathUtils.GetPath(Constants.PATH_KEYTOOL);
+            if (!File.Exists(keyToolPath))
+            {
+                logView.Log(">>>>>>查看签名信息失败: " + keyToolPath + "不存在！");
+                return null;
+            }
+
+            var startInfo = new ProcessStartInfo(keyToolPath);
+            string args = " -list -v -keystore " + certFilePath + " -storepass " + password;
+            startInfo.Arguments = args;
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.CreateNoWindow = true;
+
+            StringBuilder sb = new StringBuilder();
+            using (var process = Process.Start(startInfo))
+            {
+                var sr = process.StandardOutput;
+                while (!sr.EndOfStream)
+                {
+                    sb.AppendLine(sr.ReadLine());
+                }
+                process.WaitForExit();
+            }
+
+            return sb.ToString();
+
+        }
 
     }
 }

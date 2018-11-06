@@ -20,6 +20,7 @@ D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.UI.MessageForm.resources
 D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.UI.AssetsConfigForm.resources
 D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.Properties.Resources.resources
 D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.UI.ResignApkForm.resources
-D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.UI.BrowseCertificateForm.resources
 D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.csproj.GenerateResource.Cache
 D:\VS2008\APKINFO\APKINFO\bin\Debug\APKINFO.pdb
+D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.UI.EnterPwdForm.resources
+D:\VS2008\APKINFO\APKINFO\obj\Debug\APKINFO.UI.BrowseCertForm.resources

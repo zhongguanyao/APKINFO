@@ -27,17 +27,39 @@ namespace APKINFO.UI
     /// </summary>
     public partial class BrowseCertForm : Form, ILog
     {
-        public BrowseCertForm(string apkFilePath)
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="filePath">.apk或.keystore或.jks文件路径</param>
+        /// <param name="type">类型（Constant常量）</param>
+        public BrowseCertForm(string filePath, int type)
         {
             InitializeComponent();
 
+            mFilePath = filePath;
+            mType = type;
 
-            string msg = BrowseCertBLL.BrowseCert(apkFilePath, this);
+            if (mType == Constants.TYPE_APK_FILE) {
+                this.Text = "查看APK签名信息";
+                string msg = BrowseCertBLL.BrowseCert(mFilePath, this);
+                Log(msg);
 
-            Log(msg);
+            } else if (mType == Constants.TYPE_CERT_FILE) {
+                this.Text = "查看签名库信息";
+            }
         }
 
+        
+
+
+        private string mFilePath;
+        private int mType;
+
         public delegate void LogDelegate(string msg);
+
+
+
 
 
         #region 实现ILog接口
@@ -80,6 +102,30 @@ namespace APKINFO.UI
             this.DialogResult = DialogResult.OK;
             this.Close();
             this.Dispose();
+        }
+
+
+
+        private void BrowseCertForm_Shown(object sender, EventArgs e)
+        {
+            if (mType == Constants.TYPE_CERT_FILE)
+            {
+                Console.WriteLine("文件路径 " + mFilePath);
+                EnterPwdForm form = new EnterPwdForm();
+                DialogResult dr = form.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    Console.WriteLine("密码 " + form.Pwd);
+                    string msg = BrowseCertBLL.BrowseCert(mFilePath, form.Pwd, this);
+                    Console.WriteLine("msg " + msg);
+                    Log(msg);
+
+                } else
+                {
+                    this.Dispose();
+                    this.Close();
+                }
+            }
         }
    
     }

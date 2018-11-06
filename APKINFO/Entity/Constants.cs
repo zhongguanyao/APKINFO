@@ -43,5 +43,15 @@ namespace APKINFO.Entity
 
         public const string FILENAME_USER_CONFIG = "userconfig.xml";
         public const string FILENAME_KEYSTORE = "keystore.xml";
+
+
+        /// <summary>
+        /// 查看签名类型——APK文件
+        /// </summary>
+        public const int TYPE_APK_FILE = 0;
+        /// <summary>
+        /// 查看签名类型——签名库文件
+        /// </summary>
+        public const int TYPE_CERT_FILE= 1;
     }
 }
